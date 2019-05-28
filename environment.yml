@@ -1,0 +1,9 @@
+name: lipid-models
+channels:
+- conda-forge
+dependencies:
+- ipython
+- notebook
+- matplotlib
+- numpy
+- jinja2
