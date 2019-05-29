@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/gitesei/lipid-models/master)
+
 # lipid-models
 Coarse-grained lipid models for Monte Carlo simulations
 

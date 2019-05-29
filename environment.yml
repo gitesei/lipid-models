@@ -7,3 +7,5 @@ dependencies:
 - matplotlib
 - numpy
 - jinja2
+- mdtraj
+- nglview
