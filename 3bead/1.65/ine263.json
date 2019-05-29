@@ -1,0 +1,280 @@
+{
+    "comment": "3-bead Cooke lipid model. More information: doi:10/chqzjk",
+    "temperature": 263,
+    "random": {
+        "seed": "hardware"
+    },
+    "geometry": {
+        "type": "cuboid",
+        "length": [
+            75,
+            75,
+            187.5
+        ]
+    },
+    "mcloop": {
+        "macro": 10,
+        "micro": 2000.0
+    },
+    "atomlist": [
+        {
+            "TL": {
+                "sigma": 8,
+                "eps": 2.252473636363636,
+                "dp": 2
+            }
+        },
+        {
+            "HD": {
+                "sigma": 7.6,
+                "eps": 2.252473636363636,
+                "dp": 2
+            }
+        }
+    ],
+    "moleculelist": [
+        {
+            "lipid": {
+                "structure": [
+                    {
+                        "HD": [
+                            0,
+                            0,
+                            0
+                        ]
+                    },
+                    {
+                        "TL": [
+                            0,
+                            0,
+                            8
+                        ]
+                    },
+                    {
+                        "TL": [
+                            0,
+                            0,
+                            16
+                        ]
+                    }
+                ],
+                "bondlist": [
+                    {
+                        "fene+wca": {
+                            "index": [
+                                0,
+                                1
+                            ],
+                            "k": 1.0558470170454544,
+                            "rmax": 12.0,
+                            "sigma": 8,
+                            "eps": 2.252473636363636
+                        }
+                    },
+                    {
+                        "fene+wca": {
+                            "index": [
+                                1,
+                                2
+                            ],
+                            "k": 1.0558470170454544,
+                            "rmax": 12.0,
+                            "sigma": 8,
+                            "eps": 2.252473636363636
+                        }
+                    },
+                    {
+                        "harmonic": {
+                            "index": [
+                                0,
+                                2
+                            ],
+                            "k": 0.35194900568181814,
+                            "req": 32
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "insertmolecules": [
+        {
+            "lipid": {
+                "N": 150
+            }
+        }
+    ],
+    "energy": [
+        {
+            "confine": {
+                "type": "cuboid",
+                "low": [
+                    -100000.0,
+                    -100000.0,
+                    -30
+                ],
+                "high": [
+                    100000.0,
+                    100000.0,
+                    30
+                ],
+                "k": 80,
+                "molecules": [
+                    "lipid"
+                ],
+                "com": true
+            }
+        },
+        {
+            "bonded": {}
+        },
+        {
+            "nonbonded_cached": {
+                "cutoff_g2g": 45,
+                "default": [
+                    {
+                        "wca": {
+                            "mixing": "LB"
+                        }
+                    }
+                ],
+                "TL TL": [
+                    {
+                        "wca": {
+                            "mixing": "LB",
+                            "custom": {
+                                "TL TL": {
+                                    "sigma": 8,
+                                    "eps": 2.252473636363636
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "cos2": {
+                            "rc": 8.979696,
+                            "eps": 2.252473636363636,
+                            "wc": 13.2
+                        }
+                    }
+                ],
+                "HD TL": [
+                    {
+                        "wca": {
+                            "mixing": "LB",
+                            "custom": {
+                                "HD TL": {
+                                    "sigma": 8,
+                                    "eps": 2.252473636363636
+                                }
+                            }
+                        }
+                    }
+                ],
+                "HD HD": [
+                    {
+                        "wca": {
+                            "mixing": "LB",
+                            "custom": {
+                                "HD HD": {
+                                    "sigma": 7.6,
+                                    "eps": 2.252473636363636
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "moves": [
+        {
+            "moltransrot": {
+                "molecule": "lipid",
+                "dp": 1.0,
+                "dprot": 0.5,
+                "repeat": 150
+            }
+        },
+        {
+            "transrot": {
+                "molecule": "lipid",
+                "repeat": 150
+            }
+        },
+        {
+            "volume": {
+                "dV": 0.04,
+                "method": "isochoric",
+                "repeat": 0
+            }
+        }
+    ],
+    "analysis": [
+        {
+            "savestate": {
+                "file": "state263.json"
+            }
+        },
+        {
+            "savestate": {
+                "file": "confout263.pqr"
+            }
+        },
+        {
+            "savestate": {
+                "file": "confout263.gro"
+            }
+        },
+        {
+            "systemenergy": {
+                "file": "energy263.dat",
+                "nstep": 100.0
+            }
+        },
+        {
+            "xtcfile": {
+                "file": "traj263.xtc",
+                "nstep": 100000.0
+            }
+        },
+        {
+            "reactioncoordinate": {
+                "file": "Lx263.dat",
+                "nstep": 100.0,
+                "type": "system",
+                "property": "Lx"
+            }
+        },
+        {
+            "sliceddensity": {
+                "file": "HD263.dat",
+                "nstep": 100.0,
+                "atoms": [
+                    "HD"
+                ],
+                "dz": 0.5,
+                "nskip": 200000.0,
+                "atomcom": "TL"
+            }
+        },
+        {
+            "sliceddensity": {
+                "file": "TL263.dat",
+                "nstep": 100.0,
+                "atoms": [
+                    "TL"
+                ],
+                "dz": 0.5,
+                "nskip": 200000.0,
+                "atomcom": "TL"
+            }
+        },
+        {
+            "sanity": {
+                "nstep": 10000.0
+            }
+        }
+    ]
+}
+
