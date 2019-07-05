@@ -3,7 +3,7 @@
 # lipid-models
 Coarse-grained lipid models for Monte Carlo simulations
 
-![alt text](https://github.com/gitesei/lipid-models/edit/master/bilayer.png)
+![](https://github.com/gitesei/lipid-models/blob/master/bilayer.png =100x20)
 
 ### Layout
 
